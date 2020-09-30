@@ -73,9 +73,9 @@ void eraseTreeMap(TreeMap * tree, void* key){
 void * searchTreeMap(TreeMap * tree, void* key) {
     TreeMap* actual=tree;
     int flag;
-    while(actual->root!=NULL){
+    while(actual!=NULL){
       if(is_equal(tree,actual->root->key,key)==1){
-        tree->current=actual->current;
+        tree->current=actual->root;
         return actual->root->value;
       }
       flag=tree->lower_than(actual->root->key,key);
