@@ -77,7 +77,7 @@ TreeNode * minimum(TreeNode * x){
     while(x!=NULL){
       x=x->left;
     }
-    return x;
+    return x->right;
 }
 
 
