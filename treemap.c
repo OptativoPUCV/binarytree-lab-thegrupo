@@ -75,7 +75,7 @@ void * searchTreeMap(TreeMap * tree, void* key) {
     int flag;
     while(actual->root!=NULL){
       if(is_equal(tree,actual->root->key,key)==1){
-        tree->current=actual->root;
+        tree->current=actual->current;
         return actual->root->value;
       }
       flag=tree->lower_than(actual->root->key,key);
