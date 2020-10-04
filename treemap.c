@@ -113,7 +113,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
           free(node);
           return;
         }else{//nodo con 2 hujos
-          TreeNode* aux=minimum(node->left);
+          TreeNode* aux=minimum(node->right);
           node->key=aux->key;
           node->value=aux->value;
           if(aux->left!=NULL){
