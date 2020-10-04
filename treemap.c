@@ -166,9 +166,31 @@ void * upperBound(TreeMap * tree, void* key) {
 }
 
 void * firstTreeMap(TreeMap * tree) {
-    return NULL;
+    TreeNode* aux=minimum(tree->root);
+    return aux->value;
 }
 
 void * nextTreeMap(TreeMap * tree) {
+    TreeNode* aux;
+    if(tree->current->right!=NULL){
+      aux=minimum(tree->current->right);
+      tree->current=aux;
+      return aux->value;
+    }else{
+      int ban=0;
+      aux=tree->current->parent;
+      while(aux!=NULL){
+        if(tree->lower_than(tree->current->key,aux->key)==1){
+          ban=1;
+          break;
+        }
+        aux=aux->parent;
+      }
+      if(ban==0){
+        return NULL;
+      }
+      tree->current=aux;
+      return aux->value;
+    }
     return NULL;
 }
