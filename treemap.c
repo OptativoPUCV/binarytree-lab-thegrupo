@@ -162,7 +162,28 @@ void * searchTreeMap(TreeMap * tree, void* key) {
 
 
 void * upperBound(TreeMap * tree, void* key) {
-    return NULL;
+    TreeNode* aux_ub=tree->root;
+    TreeNode* rec=tree->root;//variable recorrer
+    int ban=0;
+    while(rec!=NULL){
+      if(is_equal(tree,rec->key,key)){
+        return rec->value;
+      }
+      if(tree->lower_than(key,rec->key)==1){
+        aux_ub=rec;
+        ban=1;
+      }
+      if(tree->lower_than(rec->key,key)==1){
+        rec=rec->right;
+      }else{
+        rec=rec->left;
+      }
+    }
+    if(ban==1){
+      return aux_ub->value;
+    }else{
+      return NULL;
+    }
 }
 
 void * firstTreeMap(TreeMap * tree) {
